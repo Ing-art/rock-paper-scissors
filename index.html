@@ -12,11 +12,11 @@
         <br>
         <div class="flex-container choices">
             <figure>
-                <img id="human_choice" src="/images/giphy.gif" alt="your choice">
+                <img id="human_choice" src="images/giphy.gif" alt="your choice">
                 <figcaption id="human_caption">You</figcaption>
             </figure>
             <figure>
-                <img id="machine_choice" src="/images/giphy_machine.gif" alt="machine's choice"> 
+                <img id="machine_choice" src="images/giphy_machine.gif" alt="machine's choice"> 
                 <figcaption></figcaption>
             </figure>        
         </div>
@@ -28,9 +28,9 @@
         <br>
         <h2>Make your choice and click "Play" </h2>
         <div class="flex-container">
-            <img class="choice" id="rock" src="/images/1.PNG" alt="rock" title="rock" onclick="human_option(1)">
-            <img class="choice" id="paper" src="/images/2.PNG" alt="paper" title="paper" onclick="human_option(2)">
-            <img class="choice" id="scissors" src="/images/3.PNG" alt="scissors" title="scissors" onclick="human_option(3)">
+            <img class="choice" id="rock" src="images/1.png" alt="rock" title="rock" onclick="human_option(1)">
+            <img class="choice" id="paper" src="images/2.png" alt="paper" title="paper" onclick="human_option(2)">
+            <img class="choice" id="scissors" src="images/3.png" alt="scissors" title="scissors" onclick="human_option(3)">
         </div>
         <br>
             <table class="results">
@@ -71,8 +71,8 @@
             function game(){
     
                 machine = randomNum();
-                human_choice.src = "/images/"+human+"_big.PNG";
-                machine_choice.src ="/images/"+machine+"_big_m.PNG";
+                human_choice.src = "images/"+human+"_big.png";
+                machine_choice.src ="images/"+machine+"_big_m.png";
 
                 
                 if(human==1 && machine==3 ||human==2 && machine==1 || human==3 && machine==2){
@@ -100,8 +100,8 @@
                 t_loss.textContent=0;
                 t_wins.textContent=0;
                 t_draws.textContent=0;
-                human_choice.src="/images/giphy.gif";
-                machine_choice.src="/images/giphy_machine.gif";
+                human_choice.src="images/giphy.gif";
+                machine_choice.src="images/giphy_machine.gif";
                 human_caption.textContent = "You";        
             }
 
