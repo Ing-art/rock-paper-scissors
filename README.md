@@ -23,3 +23,5 @@ If both you and the computer choose the same, it's a tie and nobody wins.
 5. Repeat: Continue playing rounds until you decide to stop. There's no set number of rounds, so you can play as many or as few as you want!
 
 Remember, the key to winning at Rock, Paper, Scissors is to try and anticipate the other player's move. Good luck!
+
+link to the game: https://rock-paper-scissors-web-production.up.railway.app/
