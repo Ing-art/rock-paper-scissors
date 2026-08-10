@@ -1,110 +1,91 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Rock Paper Scissors</title>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <script src="js/javascript.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#111827">
+        <meta name="description" content="A simple rock, paper, scissors game.">
+        <title>Rock, Paper, Scissors</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/javascript.js" defer></script>
     </head>
     <body>
-        <h1>Rock Paper Scissors</h1>
-        <br>
-        <div class="flex-container choices">
-            <figure>
-                <img id="human_choice" src="images/giphy.gif" alt="your choice">
-                <figcaption id="human_caption">You</figcaption>
-            </figure>
-            <figure>
-                <img id="machine_choice" src="images/giphy_machine.gif" alt="machine's choice"> 
-                <figcaption></figcaption>
-            </figure>        
-        </div>
-        <div class="buttons">
-        <button id="play" onclick="game()">Play</button>
-        <button id="reset" onclick="reset()">Reset</button>
-        </div>
-        <br>
-        <br>
-        <h2>Make your choice and click "Play" </h2>
-        <div class="flex-container">
-            <img class="choice" id="rock" src="images/1.png" alt="rock" title="rock" onclick="human_option(1)">
-            <img class="choice" id="paper" src="images/2.png" alt="paper" title="paper" onclick="human_option(2)">
-            <img class="choice" id="scissors" src="images/3.png" alt="scissors" title="scissors" onclick="human_option(3)">
-        </div>
-        <br>
-            <table class="results">
-                <tr>
-                    <th>Wins</th>
-                    <th>Losses</th>
-                    <th>Draws</th>
-                </tr>
-                <tr>
-                    <td id="t_wins">0</td>
-                    <td id="t_loss">0</td>
-                    <td id="t_draws">0</td>
-                </tr>
-            </table>
+        <main class="game" aria-labelledby="game-title">
+            <header class="game__header">
+                <p class="eyebrow">Simple game</p>
+                <h1 id="game-title">Rock, Paper, Scissors</h1>
+                <p class="subtitle">Choose an option and play against the computer.</p>
+            </header>
 
-        <script>
-            var human_wins=0;
-            var human_losses=0;
-            var draws=0;
-            var human;
-            function human_option(value){
-                human = value;
-                
-            }
+            <section class="scoreboard" aria-labelledby="score-title">
+                <h2 id="score-title" class="sr-only">Game score</h2>
+                <div class="score score--wins">
+                    <span class="score__label">Wins</span>
+                    <strong id="t_wins" class="score__value">0</strong>
+                </div>
+                <div class="score score--draws">
+                    <span class="score__label">Draws</span>
+                    <strong id="t_draws" class="score__value">0</strong>
+                </div>
+                <div class="score score--losses">
+                    <span class="score__label">Losses</span>
+                    <strong id="t_loss" class="score__value">0</strong>
+                </div>
+            </section>
 
-            //1=rock
-            //2=paper
-            //3=scissors
+            <section class="arena" aria-labelledby="round-title">
+                <h2 id="round-title" class="sr-only">Round result</h2>
+                <div class="player">
+                    <span class="player__label">You</span>
+                    <div class="player__image-wrap">
+                        <img id="human_choice" src="images/giphy.gif" alt="Waiting for your choice">
+                    </div>
+                </div>
 
-            //winning combinations:
-            //1-3; 2-1; 3-2
+                <div class="round-status">
+                    <span class="round-status__versus" aria-hidden="true">VS</span>
+                    <p id="round_result" role="status" aria-live="polite">Choose an option</p>
+                </div>
 
-            //losing combinations:
-            //1-2; 2-3; 3-1
+                <div class="player">
+                    <span class="player__label">Computer</span>
+                    <div class="player__image-wrap">
+                        <img id="machine_choice" src="images/giphy_machine.gif" alt="Waiting for the computer's choice">
+                    </div>
+                </div>
+            </section>
 
-            //draws: 1-1; 2-2; 3-3
+            <section class="controls" aria-labelledby="choice-title">
+                <div class="controls__heading">
+                    <div>
+                        <p class="eyebrow">Your turn</p>
+                        <h2 id="choice-title">Choose an option</h2>
+                    </div>
+                    <button id="reset" class="button button--ghost" type="button" aria-label="Reset the game and set the score to zero">
+                        Reset
+                    </button>
+                </div>
 
-            function game(){
-    
-                machine = randomNum();
-                human_choice.src = "images/"+human+"_big.png";
-                machine_choice.src ="images/"+machine+"_big_m.png";
+                <div class="choice-list" role="group" aria-label="Game options">
+                    <button class="choice" type="button" data-choice="1" aria-pressed="false">
+                        <img src="images/icon-rock.png" alt="" aria-hidden="true">
+                        <span>Rock</span>
+                    </button>
+                    <button class="choice" type="button" data-choice="2" aria-pressed="false">
+                        <img src="images/icon-paper.png" alt="" aria-hidden="true">
+                        <span>Paper</span>
+                    </button>
+                    <button class="choice" type="button" data-choice="3" aria-pressed="false">
+                        <img src="images/icon-scissors.png" alt="" aria-hidden="true">
+                        <span>Scissors</span>
+                    </button>
+                </div>
 
-                
-                if(human==1 && machine==3 ||human==2 && machine==1 || human==3 && machine==2){
-                    human_wins +=1;
-                    t_wins.textContent =human_wins;
-                    human_caption.textContent = "You Win!"
-
-                }
-                else if(human==machine){
-                    draws +=1; 
-                    t_draws.textContent=draws;
-                    human_caption.textContent = "Draw"     
-                }
-                else{
-                    human_losses +=1;
-                    t_loss.textContent = human_losses;
-                    human_caption.textContent = "You Lose!"
-                }
-            }
-
-            function reset(){
-                human_wins=0;
-                human_losses=0;
-                draws=0;
-                t_loss.textContent=0;
-                t_wins.textContent=0;
-                t_draws.textContent=0;
-                human_choice.src="images/giphy.gif";
-                machine_choice.src="images/giphy_machine.gif";
-                human_caption.textContent = "You";        
-            }
-
-        </script>
+                <button id="play" class="button button--primary" type="button" disabled>
+                    Play round
+                </button>
+                <p id="choice_help" class="help-text">Select an option to continue.</p>
+            </section>
+        </main>
     </body>
-</html>  
+</html>
