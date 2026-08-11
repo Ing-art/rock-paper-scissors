@@ -25,3 +25,6 @@ If both you and the computer choose the same, it's a tie and nobody wins.
 Remember, the key to winning at Rock, Paper, Scissors is to try and anticipate the other player's move. Good luck!
 
 link to the game: https://rock-paper-scissors-web-production.up.railway.app/
+
+<img width="462" height="465" alt="image" src="https://github.com/user-attachments/assets/e6f1387d-f598-41ff-af44-db93d8b8596a" />
+
